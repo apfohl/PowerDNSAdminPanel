@@ -28,6 +28,60 @@ ActiveRecord::Schema.define(version: 20161025132012) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
+  create_table "comments", force: :cascade do |t|
+    t.integer "domain_id",                 null: false
+    t.string  "name",        limit: 255,   null: false
+    t.string  "type",        limit: 10,    null: false
+    t.integer "modified_at",               null: false
+    t.string  "account",     limit: 40
+    t.string  "comment",     limit: 65535, null: false
+  end
+
+  add_index "comments", ["domain_id", "modified_at"], name: "comments_order_idx"
+  add_index "comments", ["domain_id"], name: "comments_domain_id_index"
+  add_index "comments", ["name", "type"], name: "comments_nametype_index"
+
+# Could not dump table "cryptokeys" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
+
+  create_table "domainmetadata", force: :cascade do |t|
+    t.integer "domain_id",            null: false
+    t.string  "kind",      limit: 32
+    t.text    "content"
+  end
+
+  add_index "domainmetadata", ["domain_id"], name: "domainmetaidindex"
+
+  create_table "domains", force: :cascade do |t|
+    t.string  "name",            limit: 255, null: false
+    t.string  "master",          limit: 128
+    t.integer "last_check"
+    t.string  "type",            limit: 6,   null: false
+    t.integer "notified_serial"
+    t.string  "account",         limit: 40
+  end
+
+  add_index "domains", ["name"], name: "name_index", unique: true
+
+# Could not dump table "records" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
+
+  create_table "supermasters", id: false, force: :cascade do |t|
+    t.string "ip",         limit: 64,  null: false
+    t.string "nameserver", limit: 255, null: false
+    t.string "account",    limit: 40,  null: false
+  end
+
+  add_index "supermasters", ["ip", "nameserver"], name: "ip_nameserver_pk", unique: true
+
+  create_table "tsigkeys", force: :cascade do |t|
+    t.string "name",      limit: 255
+    t.string "algorithm", limit: 50
+    t.string "secret",    limit: 255
+  end
+
+  add_index "tsigkeys", ["name", "algorithm"], name: "namealgoindex", unique: true
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
