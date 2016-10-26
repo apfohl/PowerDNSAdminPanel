@@ -15,6 +15,6 @@ class Domain < ActiveRecord::Base
 
   def update_soa
     soa = self.records.find_by(type: 'SOA')
-    soa.save
+    soa.save if soa
   end
 end

@@ -38,7 +38,11 @@ ActiveAdmin.register Record do
   form do |f|
     f.semantic_errors
     f.inputs do
-      f.input :name
+      if f.object.new_record?
+        f.input :name
+      else
+        f.input :name, input_html: { readonly: true }
+      end
       f.input :type, as: :select, collection: Record.types
       f.input :content
       f.input :ttl
