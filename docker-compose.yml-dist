@@ -1,0 +1,15 @@
+version: '2'
+services:
+  web:
+    build: .
+    command: bundle exec rails server -b 0.0.0.0
+    container_name: powerdns-admin-panel
+    restart: always
+    environment:
+      RAILS_ENV: production
+      SECRET_KEY_BASE: <insert secret here>
+      RAILS_SERVE_STATIC_FILES: 1
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - <insert path to production sqlite3 db file>:/usr/src/app/db/production.sqlite3
