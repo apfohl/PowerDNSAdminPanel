@@ -1,5 +1,5 @@
 ActiveAdmin.register Domain do
-  permit_params :name, :type
+  permit_params :name, :master, :type
 
   actions :all, except: [:edit, :update, :show]
 
@@ -8,6 +8,7 @@ ActiveAdmin.register Domain do
   index do
     selectable_column
     column :name
+    column :master
     column :type
     column :notified_serial
     actions do |domain|
@@ -17,7 +18,11 @@ ActiveAdmin.register Domain do
 
   form do |f|
     f.semantic_errors
-    f.inputs :name, :type
+    f.inputs do
+      f.input :name
+      f.input :master, hint: 'Insert only if type is SLAVE'
+      f.input :type, as: :select, collection: Domain.types
+    end
     f.actions
   end
 end

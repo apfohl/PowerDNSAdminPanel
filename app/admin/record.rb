@@ -37,7 +37,14 @@ ActiveAdmin.register Record do
 
   form do |f|
     f.semantic_errors
-    f.inputs :name, :type, :content, :ttl, :prio, :disabled
+    f.inputs do
+      f.input :name
+      f.input :type, as: :select, collection: Record.types
+      f.input :content
+      f.input :ttl
+      f.input :prio
+      f.input :disabled
+    end
     f.actions
   end
 end
