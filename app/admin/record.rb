@@ -13,6 +13,7 @@ ActiveAdmin.register Record do
 
   index do
     selectable_column
+    column :id
     column :type do |domain|
       case domain.type
         when 'SOA'
@@ -46,7 +47,7 @@ ActiveAdmin.register Record do
       f.input :type, as: :select, collection: Record.types
       f.input :content
       f.input :ttl
-      f.input :prio
+      f.input :prio, hint: 'Insert only if type is MX'
       f.input :disabled
     end
     f.actions

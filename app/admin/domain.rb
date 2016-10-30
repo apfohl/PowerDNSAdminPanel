@@ -1,12 +1,15 @@
 ActiveAdmin.register Domain do
   permit_params :name, :master, :type
 
+  config.sort_order = 'name_asc'
+
   actions :all, except: [:show]
 
   config.filters = false
 
   index do
     selectable_column
+    column :id
     column :name
     column :master
     column :type

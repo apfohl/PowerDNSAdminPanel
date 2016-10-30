@@ -10,7 +10,7 @@ ActiveAdmin.register User do
     column :sign_in_count
     column :created_at
     actions do |user|
-      link_to('Generate API-Token', user_generate_api_token_path(user), method: :put)
+      link_to('Generate API-Token', user_generate_api_token_path(user), method: :put, data: { confirm: 'Are you sure?' })
     end
   end
 
