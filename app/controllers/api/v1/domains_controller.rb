@@ -1,4 +1,5 @@
 class Api::V1::DomainsController < ApplicationController
+  before_action :authenticate
   before_action :set_domain, only: [:show, :update, :destroy]
 
   def index

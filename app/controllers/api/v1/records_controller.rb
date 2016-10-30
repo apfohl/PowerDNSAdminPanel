@@ -1,4 +1,5 @@
 class Api::V1::RecordsController < ApplicationController
+  before_action :authenticate
   before_action :set_domain
   before_action :set_record, only: [:show, :update, :destroy]
 

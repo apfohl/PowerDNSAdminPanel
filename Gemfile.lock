@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/activeadmin/activeadmin.git
-  revision: 3a16a1fc45961c0dfea3111a87995eae4382a59c
+  revision: 78324a83fa01d62bbc372bafc2313be5b3837529
   specs:
     activeadmin (1.0.0.pre4)
       arbre (~> 1.0, >= 1.0.2)
@@ -98,6 +98,8 @@ GEM
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    has_secure_token (1.0.0)
+      activerecord (>= 3.0)
     i18n (0.7.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
@@ -228,6 +230,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   foreman
+  has_secure_token
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.7.1)
