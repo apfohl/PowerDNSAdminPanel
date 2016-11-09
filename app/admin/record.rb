@@ -14,18 +14,18 @@ ActiveAdmin.register Record do
   index do
     selectable_column
     column :id
-    column :type do |domain|
-      case domain.type
+    column :type do |record|
+      case record.type
         when 'SOA'
-          status_tag(domain.type, :blue)
+          status_tag(record.type, :blue)
         when 'NS'
-          status_tag(domain.type, :green)
+          status_tag(record.type, :green)
         when 'A'
-          status_tag(domain.type, :red)
+          status_tag(record.type, :red)
         when 'AAAA'
-          status_tag(domain.type, :orange)
+          status_tag(record.type, :orange)
         else
-          status_tag(domain.type)
+          status_tag(record.type)
       end
     end
     column :name
@@ -33,6 +33,9 @@ ActiveAdmin.register Record do
     column :ttl
     column :prio
     column :disabled
+    column :change_date do |record|
+      Time.at(record.change_date).iso8601
+    end
     actions
   end
 
