@@ -8,7 +8,7 @@ This document describes version 1 of the JSON API.
 
 # API endpoint
 
-    http://localhost:3000/api/v1/
+    <%= root_url %>api/v1/
 
 # Basics
 
@@ -43,23 +43,23 @@ Curl example:
 
 ## List all domains
 
-`GET`: http://localhost:3000/api/v1/domains
+`GET`: <%= root_url %>api/v1/domains
 
 Curl example:
 
-    curl -vX GET http://localhost:3000/api/v1/domains
+    curl -vX GET <%= root_url %>api/v1/domains
 
 ## Get single domain
 
-`GET`: http://localhost:3000/api/v1/domains/:id
+`GET`: <%= root_url %>api/v1/domains/:id
 
 Curl example:
 
-    curl -vX GET http://localhost:3000/api/v1/domains/1
+    curl -vX GET <%= root_url %>api/v1/domains/1
 
 ## Create domain
 
-`POST`: http://localhost:3000/api/v1/domains
+`POST`: <%= root_url %>api/v1/domains
 
 Data:
 
@@ -71,11 +71,11 @@ Data:
 
 Curl example:
 
-    curl -vX POST -d '{"name":"example.com","type":"MASTER"}' http://localhost:3000/api/v1/domains
+    curl -vX POST -d '{"name":"example.com","type":"MASTER"}' <%= root_url %>api/v1/domains
 
 ## Update domain
 
-`PUT`/`PATCH`: http://localhost:3000/api/v1/domains/:id
+`PUT`/`PATCH`: <%= root_url %>api/v1/domains/:id
 
 Data:
 
@@ -87,38 +87,38 @@ Data:
 
 Curl example:
 
-    curl -vX PUT -d '{"name":"example.com","type":"MASTER"}' http://localhost:3000/api/v1/domains/1
-    curl -vX PATCH -d '{"name":"example.com","type":"MASTER"}' http://localhost:3000/api/v1/domains/1
+    curl -vX PUT -d '{"name":"example.com","type":"MASTER"}' <%= root_url %>api/v1/domains/1
+    curl -vX PATCH -d '{"name":"example.com","type":"MASTER"}' <%= root_url %>api/v1/domains/1
 
 ## Delete domain
 
-`DELETE`: http://localhost:3000/api/v1/domains/:id
+`DELETE`: <%= root_url %>api/v1/domains/:id
 
 Curl example:
 
-    curl -vX DELETE http://localhost:3000/api/v1/domains/1
+    curl -vX DELETE <%= root_url %>api/v1/domains/1
 
 # Records
 
 ## List all records of a domain
 
-`GET`: http://localhost:3000/api/v1/domains/:domain_id/records
+`GET`: <%= root_url %>api/v1/domains/:domain_id/records
 
 Curl example:
 
-    curl -vX GET http://localhost:3000/api/v1/domains/1/records
+    curl -vX GET <%= root_url %>api/v1/domains/1/records
 
 ## Get single record of domain
 
-`GET`: http://localhost:3000/api/v1/domains/:domain_id/records/:id
+`GET`: <%= root_url %>api/v1/domains/:domain_id/records/:id
 
 Curl example:
 
-    curl -vX GET http://localhost:3000/api/v1/domains/1/records/1
+    curl -vX GET <%= root_url %>api/v1/domains/1/records/1
 
 ## Create record
 
-`POST`: http://localhost:3000/api/v1/domains/:domain_id/records
+`POST`: <%= root_url %>api/v1/domains/:domain_id/records
 
 Data:
 
@@ -133,11 +133,11 @@ Data:
 
 Curl example:
 
-    curl -vX POST -d '{"name":"www.example.com","type":"A","content":"127.0.0.1","ttl":300}' http://localhost:3000/api/v1/domains/1/records
+    curl -vX POST -d '{"name":"www.example.com","type":"A","content":"127.0.0.1","ttl":300}' <%= root_url %>api/v1/domains/1/records
 
 ## Update record
 
-`PUT`/`PATCH`: http://localhost:3000/api/v1/domains/:domain_id/records/:id
+`PUT`/`PATCH`: <%= root_url %>api/v1/domains/:domain_id/records/:id
 
 Data:
 
@@ -152,13 +152,13 @@ Data:
 
 Curl example:
 
-    curl -vX PUT -d '{"name":"www.example.com","type":"A","content":"127.0.0.2","ttl":3600}' http://localhost:3000/api/v1/domains/1/records/1
-    curl -vX PATCH -d '{"name":"www.example.com","type":"A","content":"127.0.0.2","ttl":3600}' http://localhost:3000/api/v1/domains/1/records/1
+    curl -vX PUT -d '{"name":"www.example.com","type":"A","content":"127.0.0.2","ttl":3600}' <%= root_url %>api/v1/domains/1/records/1
+    curl -vX PATCH -d '{"name":"www.example.com","type":"A","content":"127.0.0.2","ttl":3600}' <%= root_url %>api/v1/domains/1/records/1
 
 ## Delete record
 
-`DELETE`: http://localhost:3000/api/v1/domains/:domain_id/records/:id
+`DELETE`: <%= root_url %>api/v1/domains/:domain_id/records/:id
 
 Curl example:
 
-    curl -vX DELETE http://localhost:3000/api/v1/domains/1/records/1
+    curl -vX DELETE <%= root_url %>api/v1/domains/1/records/1
