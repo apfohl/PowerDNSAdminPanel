@@ -7,7 +7,7 @@ class MarkdownTemplateHandler
 
   def self.call(template)
     compiled_source = erb.call(template)
-    "Kramdown::Document.new(begin;#{compiled_source};end, auto_ids: false).to_html.html_safe"
+    "Kramdown::Document.new(begin;#{compiled_source};end, {template: 'string://<div class=\"markdown-body\"><%= @body %></div>'}).to_html.html_safe"
   end
 end
 
