@@ -1,5 +1,3 @@
-# JSON API documentation
-
 This document describes version 1 of the JSON API.
 
 ## API endpoint
