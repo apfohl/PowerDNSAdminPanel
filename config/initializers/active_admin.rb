@@ -272,6 +272,4 @@ ActiveAdmin.setup do |config|
   # of those filters by default here.
   #
   # config.include_default_association_filters = true
-
-  config.view_factory.footer = ActiveAdmin::Component
 end
