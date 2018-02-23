@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation
 
@@ -10,7 +12,8 @@ ActiveAdmin.register User do
     column :sign_in_count
     column :created_at
     actions do |user|
-      link_to('Generate API-Token', user_generate_api_token_path(user), method: :put, data: { confirm: 'Are you sure?' })
+      link_to('Generate API-Token', user_generate_api_token_path(user),
+              method: :put, data: { confirm: 'Are you sure?' })
     end
   end
 
@@ -20,7 +23,7 @@ ActiveAdmin.register User do
   filter :created_at
 
   form do |f|
-    f.inputs "Admin Details" do
+    f.inputs 'Admin Details' do
       f.input :email
       f.input :password
       f.input :password_confirmation

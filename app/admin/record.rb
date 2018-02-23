@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Record do
   permit_params :domain_id, :name, :type, :content, :ttl, :prio, :disabled
 
@@ -16,16 +18,16 @@ ActiveAdmin.register Record do
     column :id
     column :type do |record|
       case record.type
-        when 'SOA'
-          status_tag(record.type, :blue)
-        when 'NS'
-          status_tag(record.type, :green)
-        when 'A'
-          status_tag(record.type, :red)
-        when 'AAAA'
-          status_tag(record.type, :orange)
-        else
-          status_tag(record.type)
+      when 'SOA'
+        status_tag(record.type, :blue)
+      when 'NS'
+        status_tag(record.type, :green)
+      when 'A'
+        status_tag(record.type, :red)
+      when 'AAAA'
+        status_tag(record.type, :orange)
+      else
+        status_tag(record.type)
       end
     end
     column :name

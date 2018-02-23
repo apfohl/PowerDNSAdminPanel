@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# User class
 class User < ActiveRecord::Base
   has_secure_token :api_token
 

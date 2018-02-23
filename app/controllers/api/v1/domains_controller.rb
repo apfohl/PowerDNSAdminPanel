@@ -1,48 +1,55 @@
-class Api::V1::DomainsController < ApplicationController
-  before_action :authenticate
-  before_action :set_domain, only: [:show, :update, :destroy]
+# frozen_string_literal: true
 
-  def index
-    @domains = Domain.all
-    render json: @domains
-  end
+module Api
+  module V1
 
-  def show
-    render json: @domain
-  end
+    # DomainsController class
+    class DomainsController < ApplicationController
+      before_action :authenticate
+      before_action :set_domain, only: %i[show update destroy]
 
-  def create
-    @domain = Domain.new(domain_params)
-    if @domain.save
-      render json: @domain, status: :created
-    else
-      render nothing: true, status: :unprocessable_entity
-    end
-  end
+      def index
+        @domains = Domain.all
+        render json: @domains
+      end
 
-  def update
-    if @domain.update(domain_params)
-      render json: @domain, status: :ok
-    else
-      render nothing: true, status: :unprocessable_entity
-    end
-  end
+      def show
+        render json: @domain
+      end
 
-  def destroy
-    @domain.destroy
-    render nothing: true, status: :ok
-  end
+      def create
+        @domain = Domain.new(domain_params)
+        if @domain.save
+          render json: @domain, status: :created
+        else
+          render nothing: true, status: :unprocessable_entity
+        end
+      end
 
-  private
-    def set_domain
-      begin
+      def update
+        if @domain.update(domain_params)
+          render json: @domain, status: :ok
+        else
+          render nothing: true, status: :unprocessable_entity
+        end
+      end
+
+      def destroy
+        @domain.destroy
+        render nothing: true, status: :ok
+      end
+
+      private
+
+      def set_domain
         @domain = Domain.find(params[:id])
       rescue ActiveRecord::RecordNotFound
         render nothing: true, status: :not_found
       end
-    end
 
-    def domain_params
-      params.require(:domain).permit(:name, :master, :type)
+      def domain_params
+        params.require(:domain).permit(:name, :master, :type)
+      end
     end
+  end
 end

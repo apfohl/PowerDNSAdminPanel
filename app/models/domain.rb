@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Domain class
 class Domain < ActiveRecord::Base
   self.inheritance_column = nil
 
@@ -6,15 +9,15 @@ class Domain < ActiveRecord::Base
   validates :name, :type, presence: true
 
   def self.types
-    %w(
+    %w[
       NATIVE
       MASTER
       SLAVE
-    )
+    ]
   end
 
   def update_soa
-    soa = self.records.find_by(type: 'SOA')
-    soa.save if soa
+    soa = records.find_by(type: 'SOA')
+    soa&.save
   end
 end

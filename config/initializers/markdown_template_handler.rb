@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'kramdown'
 
+# MarkdownTemplateHandler class
 class MarkdownTemplateHandler
   def self.erb
     @erb ||= ActionView::Template.registered_template_handler(:erb)

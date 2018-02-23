@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Record class
 class Record < ActiveRecord::Base
   self.inheritance_column = nil
 
@@ -8,27 +11,16 @@ class Record < ActiveRecord::Base
   validates :name, :type, :content, :ttl, presence: true
 
   def self.types
-    %w(
-      SOA
-      NS
-      MX
-      A
-      AAAA
-      CNAME
-      ALIAS
-      TXT
-      SRV
-      TLSA
-      DS
-    )
+    %w[SOA NS MX A AAAA CNAME ALIAS TXT SRV TLSA DS]
   end
 
   private
-    def update_change_date
-      self.change_date = Time.now.to_i
-    end
 
-    def update_soa_change_date
-      self.domain.update_soa
-    end
+  def update_change_date
+    self.change_date = Time.now.to_i
+  end
+
+  def update_soa_change_date
+    domain.update_soa
+  end
 end

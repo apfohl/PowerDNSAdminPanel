@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 ActiveAdmin.setup do |config|
   # == Site Title
   #
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "PowerDNS Admin Panel"
+  config.site_title = 'PowerDNS Admin Panel'
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -118,7 +120,8 @@ ActiveAdmin.setup do |config|
 
   # == Admin Comments
   #
-  # This allows your users to comment on any resource registered with Active Admin.
+  # This allows your users to comment on any resource registered with Active
+  # Admin.
   #
   # You can completely disable comments:
   config.comments = false
@@ -190,7 +193,8 @@ ActiveAdmin.setup do |config|
   # To load a stylesheet:
   #   config.register_stylesheet 'my_stylesheet.css'
   #
-  # You can provide an options hash for more control, which is passed along to stylesheet_link_tag():
+  # You can provide an options hash for more control, which is passed along to
+  # stylesheet_link_tag():
   #   config.register_stylesheet 'my_print_stylesheet.css', media: :print
   #
   # To load a javascript file:
@@ -207,9 +211,11 @@ ActiveAdmin.setup do |config|
 
   # == Menu System
   #
-  # You can add a navigation menu to be used in your application, or configure a provided menu
+  # You can add a navigation menu to be used in your application, or configure a
+  # provided menu
   #
-  # To change the default utility navigation to show a link to your website & a logout btn
+  # To change the default utility navigation to show a link to your website & a
+  # logout btn
   #
   #   config.namespace :admin do |admin|
   #     admin.build_menu :utility_navigation do |menu|
